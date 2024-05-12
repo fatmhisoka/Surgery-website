@@ -1,0 +1,287 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <style>  
+        body{  
+        /*font-family: Calibri, Helvetica, sans-serif;  */
+        font-family: Verdana, sans-serif;
+        background-color: #ffffff;  
+        }  
+        ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(3, 25, 50);
+      padding: 10px;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    .table-container {
+      display: flex;
+      margin-top: 60px;
+    }
+
+    .container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+
+}
+.navbar a {
+    caret-color: transparent; 
+  }
+.navbar {
+  background-color: rgba(3, 25, 50, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  background-color: #555;
+}
+.fixedbar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px; /* Adjust the width as per your preference */
+  height: calc(100vh - 60px); /* Adjust the height as per your preference */
+  background-color: rgba(3, 25, 50, 0.9); /* Sidebar background color */
+  color: #fff; /* Text color */
+}
+
+.fixedbar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.fixedbar ul li {
+  padding: 10px;
+}
+
+.fixedbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.fixedbar ul li a:hover {
+  text-decoration: underline;
+}
+.container2 {  
+  font-family: Verdana, sans-serif;
+  width: 400px;
+  text-align: left;
+  border-radius: 10px;
+  margin-left: 260px; 
+  margin-top: -30px; 
+
+}  
+.container3 {  
+  font-family: Verdana, sans-serif;
+  width: 400px;
+  text-align: left;
+  border-radius: 10px;
+  margin-left: 500px; 
+  margin-top: -403px; 
+  
+
+}  
+        
+input[type=text], input[type=password], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px; 
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  input[type=number], input[type=password], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px; 
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  input[type=datetime-local], input[type=password], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px; 
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  
+  input[type=text]:focus, input[type=password]:focus, textarea:focus {
+    background-color: #ccc; 
+    border-color: #0f0; 
+  }
+        div {  
+                    padding: 10px 0; 
+                    font-family: Verdana, sans-serif;
+ 
+                }  
+        hr {  
+        border: 1px solid #f1f1f1;  
+        margin-bottom: 25px;  
+        }  
+.Addbtn {  
+  padding: 10px 80px;
+  background-color: rgb(5, 35, 69);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 340px; 
+  font-family: Verdana, sans-serif;
+}  
+.Addbtn:hover {  
+    opacity: 1;  
+}  
+
+.container2 h2 {
+    text-align: left;
+  font-size: 30px;
+  font-family: "Myriad Pro", Arial, sans-serif;
+
+}
+        </style>  
+    </head>  
+
+    
+    <body>  
+          
+            <div class="container">
+                <nav class="navbar">
+                  <ul>
+                    <li><a href="{{url_for('home')}}" onclick="toggleSidebar(event, 'sidebar1')">Home</a></li>
+                    <li><a href="{{url_for('patient')}}" onclick="toggleSidebar(event, 'sidebar1')">Patients</a></li>
+                    <li><a href="{{url_for('surgeon')}}" onclick="toggleSidebar(event, 'sidebar1')">Surgeons</a></li>
+                    <li><a href="{{url_for('operation')}}" onclick="toggleSidebar(event, 'sidebar2')">Procedures</a></li>
+                    <li style="background-color:#555;" ><a>Appointments</a></li>
+                  </ul>
+                </nav>
+              </div>
+            
+              <div class="table-container">
+                <div id="fixedbar" class="fixedbar">
+                  <ul class="fixedbar-menu">
+                    <li><a href="{{url_for('add_appointment')}}">Add New</a></li>
+                    <li><a href="{{url_for('appointment')}}">All Appointments</a></li>
+                  </ul>
+                </div>
+            <div class="container2">
+              
+              
+              
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div id="flash-container">
+              {% for message in messages %}
+              <div class="alert alert-{{ message[1] }}">
+              {{ message }}
+              </div>
+              {% endfor %}
+              </div>
+              {% endif %}
+              {% endwith %}
+
+              <script>
+                setTimeout(function() {
+                  var flashContainer = document.getElementById('flash-container');
+                  flashContainer.parentNode.removeChild(flashContainer);
+                }, 5000); // hide after 5 seconds
+                </script>
+
+
+
+
+                <h2>Appointment Info.</h2>
+ 
+            <hr>
+        <form method="POST" action="{{url_for('add_appointment')}}">
+          
+          
+          <label>Appointment_ID:</label>
+          <input type="number" name="appointment_id"placeholder= "Appointment ID" size="15" required ><br>
+      
+          <label>Patient_ID:</label>
+          <input type="number" name="patient_id" placeholder= "Patient ID" size="15" required><br>
+      
+          <label>Surgeon_ID:</label>
+          <input type="number" name="surgeon_id" placeholder= "Surgen ID" size="15" required><br>
+      
+          <label>Operation_ID:</label>
+          <input type="number" name="operation_id" placeholder= "Operation ID" size="15" required><br>
+      
+          <label>Appointment date:</label>
+          <input type="datetime-local" name="appointments_date" placeholder= "dd/mm/yy 00:00" size="15" required><br>
+      
+          <label>OperationRoom_ID:</label>
+          <input type="number" name="operationroom_id"placeholder= "operation room ID" size="15" required><br>
+
+          <button type="submit" class="Addbtn" id = "add_button1">Add</button> 
+            
+		
+            
+        </form>  
+
+        <script>
+            // Find the button element by its ID
+            var addButton1 = document.getElementById('add_button1');
+            
+            // Add a click event listener to the button
+            addButton.addEventListener('click', function() {
+              // Show a pop-up message
+              alert('Button clicked! Message displayed.');
+            });
+          </script>
+        
+    </body>  
+</html>  

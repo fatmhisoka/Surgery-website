@@ -1,0 +1,196 @@
+<!DOCTYPE html>   
+<html>   
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <title> proceders </title>  
+        <link rel ="stylesheet" href="log_in_css.css"/>
+        <style>
+body {
+      font-family: Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(3, 25, 50);
+      padding: 10px;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    .table-container {
+      display: flex;
+      margin-top: 60px;
+    }
+
+    .container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+
+}
+.navbar a {
+    caret-color: transparent; 
+  }
+.navbar {
+  background-color: rgba(3, 25, 50, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  background-color: #555;
+}
+.fixedbar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px; /* Adjust the width as per your preference */
+  height: calc(100vh - 60px); /* Adjust the height as per your preference */
+  background-color: rgba(3, 25, 50, 0.9); /* Sidebar background color */
+  color: #fff; /* Text color */
+}
+
+.fixedbar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.fixedbar ul li {
+  padding: 10px;
+}
+
+.fixedbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.fixedbar ul li a:hover {
+  text-decoration: underline;
+}
+
+
+    .table {
+      flex: 1;
+      margin-left: 200px; /* Adjust the value as per your preference */
+      margin-right: 30px; /* Adjust the value as per your preference */
+    }
+
+    /* Apply styles to the table */
+    #table {
+      width: 100%;
+    }
+
+    /* Apply styles to the table header row */
+    #table thead th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    /* Apply alternate background color to table rows */
+    #table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Apply styles to table cells */
+    #table tbody td {
+      padding: 10px;
+    }
+
+        </style>
+    </head>    
+    
+    <body>    
+        <div class="container">
+            <nav class="navbar">
+              <ul>
+                <li><a href="{{url_for('home')}}" onclick="toggleSidebar(event, 'sidebar1')">Home</a></li>
+                <li><a href="{{url_for('patient')}}" onclick="toggleSidebar(event, 'sidebar2')">Patients</a></li>
+                <li><a href="{{url_for('surgeon')}}" onclick="toggleSidebar(event, 'sidebar1')">Surgeons</a></li>
+                <li style="background-color:#555;"><a>Procedures</a></li>
+                <li><a href="{{url_for('appointment')}}" onclick="toggleSidebar(event, 'sidebar3')">Appointments</a></li>
+              </ul>
+            </nav>
+          </div>
+        
+          <div class="table-container">
+            <div id="fixedbar" class="fixedbar">
+              <ul class="fixedbar-menu">
+                <li><a href="{{url_for('add_operation')}}">Add New</a></li>
+                <li><a href="{{url_for('operation')}}">All Procedures</a></li>
+              </ul>
+            </div>
+            
+            
+            
+            <div class = "table" >
+                
+                <table id="table" class="display nowrap" style="width:100%">
+                    <thead>
+                      <form method="POST" action="{{url_for('add_operation')}}">
+                            <tr>
+                              <th>Operation_ID</th>
+                              <th>Operation</th>
+                              <th>Describtion</th>
+                              <th>Cost</th>
+                              <th>Delete</th>
+                             </tr>
+                      </form>
+                    </thead>
+                    <tbody>
+                        
+                          {% for operation in operations %}
+                          <tr>
+                            <td>{{ operation.0 }}</td>
+                            <td>{{ operation.1 }}</td>
+                            <td>{{ operation.2 }}</td>
+                            <td>{{ operation.3 }}</td>
+                            <td><button style="background-color: rgb(205, 72, 72);"><a href="/delete_operation/{{operation.0}}">Delete</a></button></td>
+                          </tr>
+                        {% endfor %}
+                        
+                </tbody>
+                
+            </table>  
+        </div>
+    </body>     
+    </html>   

@@ -1,0 +1,75 @@
+<!DOCTYPE html>   
+<html>   
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <title> recorded appointment </title>  
+        <link rel ="stylesheet" href="log_in_css.css"/>
+        <style>
+            .table {
+                margin-top: 60px; /* Adjust the value as per your preference */
+                margin-left: 30px; /* Adjust the value as per your preference */
+                margin-right: 30px; /* Adjust the value as per your preference */
+              }
+            .button{
+                background-color: rgb(26, 189, 121);
+                border-radius: 40px;
+            }
+        
+                    /* Apply styles to the table */
+            #table {
+            width: 100%;
+            }
+
+            /* Apply styles to the table header row */
+            #table thead th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            padding: 10px;
+            }
+
+            /* Apply alternate background color to table rows */
+            #table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+            }
+
+            /* Apply styles to table cells */
+            #table tbody td {
+            padding: 10px;
+            }
+
+        </style>
+    </head>    
+    
+    <body>    
+        <div>
+            <ul>
+                <li ><a>Home</a></li>
+                <li><a>patients</a></li>
+                <li ><a>surgeries</a></li>
+                <li style="background-color:black;"><a>appointmenst</a></li>
+                <li><a>operations</a></li>
+            </ul>
+            
+            
+            
+            <div class = "table" >
+                
+                <table id="table" class="display nowrap" style="width:100%">
+                    <thead>
+                            <tr>
+                                <th>appointment ID</th>
+                                <th>PATIENT ID</th>
+                                <th>Surgeon ID</th>
+                                <th>Doctor ID</th>
+                                <th>Procedure ID</th>
+                                <th>Appointment Date</th>
+                                <th colspan="2"><button class="button">Add appointment</button></th>                            </tr>
+                    </thead>
+                    <tbody>
+                    
+                </tbody>
+                
+            </table>  
+        </div>
+    </body>     
+    </html>   

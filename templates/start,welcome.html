@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script>
+    let currentSidebar = null;
+
+function toggleSidebar(event, sidebarId) {
+  event.preventDefault();
+  
+  const sidebar = document.getElementById(sidebarId);
+  const sidebarLinks = sidebar.querySelectorAll('.sidebar-menu li a');
+  
+  if (currentSidebar && currentSidebar !== sidebar) {
+    currentSidebar.style.left = '-200px';
+    const currentSidebarLinks = currentSidebar.querySelectorAll('.sidebar-menu li a');
+    currentSidebarLinks.forEach(link => link.style.pointerEvents = 'none');
+  }
+  
+  if (sidebar.style.left === '-200px') {
+    sidebar.style.left = '0';
+    sidebarLinks.forEach(link => link.style.pointerEvents = 'auto');
+    currentSidebar = sidebar;
+  } else {
+    sidebar.style.left = '-200px';
+    sidebarLinks.forEach(link => link.style.pointerEvents = 'none');
+    currentSidebar = null;
+  }
+}
+
+
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <ul>
+        <li ><a>Home</a></li>
+        <li><a href="{{url_for('patient')}}" onclick="toggleSidebar(event, 'sidebar')">Patients</a></li>
+        <li><a href="{{url_for('surgeon')}}"  onclick="toggleSidebar(event, 'sidebar1')">Surgeons</a></li>
+        <li><a href="{{url_for('operation')}}"onclick="toggleSidebar(event, 'sidebar2')">Procedures</a></li>
+        <li><a href="{{url_for('appointment')}}" onclick="toggleSidebar(event, 'sidebar3')">Appointments</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="title">
+    <h2 class="title">Welcome<br>to Surgery<br>application</h2>
+  </div>
+  <div id="sidebar" class="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="{{url_for('add_patient')}}">Add New</a></li>
+      <li><a href="{{url_for('patient')}}">All Patients</a></li>
+    </ul>
+  </div>
+  <div id="sidebar1" class="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="{{url_for('add_surgeon')}}">Add New</a></li>
+      <li><a href="{{url_for('surgeon')}}">All Surgeons</a></li>
+    </ul>
+  </div>
+  <div id="sidebar2" class="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="{{url_for('add_operation')}}">Add New</a></li>
+      <li><a href="{{url_for('operation')}}">All Operations</a></li>
+    </ul>
+  </div>
+  <div id="sidebar3" class="sidebar">
+    <ul class="sidebar-menu">
+      <li><a href="{{url_for('add_appointment')}}">Add New</a></li>
+      <li><a href="{{url_for('appointment')}}">All Appointments</a></li>
+    </ul>
+  </div>
+  <style>
+
+
+body {
+  font-family: Verdana, sans-serif;
+  background-image: url(static/back.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(3, 25, 50);
+
+}
+
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+
+}
+
+.title h2 {
+  font-size: 60px;
+  text-align: left;
+  margin-left: 230px; 
+  margin-top: 300px; 
+  color: #fff;
+  font-family: "Myriad Pro", Arial, sans-serif;
+
+
+}
+
+.navbar {
+  background-color: rgba(3, 25, 50, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  background-color: #555;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: rgba(3, 25, 50, 0.7);
+  position: fixed;
+  top: 0;
+  left: -200px;
+  height: 95%;
+  margin-top: 4%;
+  transition: left 0.3s ease-in-out;
+  z-index: 9998;
+}
+
+.sidebar1 {
+  width: 200px;
+  background-color: rgba(3, 25, 50, 0.7);
+  position: fixed;
+  top: 0;
+  left: -200px;
+  height: 95%;
+  margin-top: 4%;
+  transition: left 0.3s ease-in-out;
+  z-index: 9998;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar-menu li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+  </style>
+</body>
+</html>
