@@ -3,7 +3,7 @@
 ## Overview
 This database application manages the records and operations of a surgical department. It facilitates adding and deleting patients, surgeons, appointments, and operations while ensuring data integrity and consistency. The application also handles key error cases to maintain database integrity.
 
-![Surgical Department Database](1.png)
+![Surgical Department Database](static/1.png)
 
 ## Features
 
@@ -15,7 +15,7 @@ This database application manages the records and operations of a surgical depar
 - **View Patient Appointment:**
   - Allows viewing patient appointments based on patient_id.
 
-![Patient Management](2.png)
+![Patient Management](static/2.png)
 
 ### Surgeon Management
 - **Add Surgeon:**
@@ -31,13 +31,13 @@ This database application manages the records and operations of a surgical depar
 - **Delete Appointment:**
   - Allows deletion of appointment records based on appointment_id.
 
-![Appointment Management](3.png)
+![Appointment Management](static/3.png)
 
 ### Operation Management
 - **Add Operation:**
   - Attributes: operation_id, operation, description, cost.
 
-![Operation Management](4.png)
+![Operation Management](static/4.png)
 
 ## Error Handling
 - **Unique IDs:**
